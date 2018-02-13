@@ -1,12 +1,14 @@
 <template>
   <div class="vsc-wrapper">
-    <div class="vsc-thumb" :style="thumbStyle" ref="thumb">
+    <div :class="['vsc-thumb', thumbClass]" :style="thumbStyle" ref="thumb">
       <div :style="{ background: gradient }" v-if="gradient"></div>
     </div>
   </div>
 </template>
 
 <script>
+  const ScrollLeft = 0;
+
   export default {
     props: {
       opened: {
@@ -21,6 +23,11 @@
 
       thumb: {
         type: String,
+      },
+
+      thumbClass: {
+        type: String,
+        default: 'vsc-thumb--background',
       },
 
       transition: {
@@ -41,6 +48,12 @@
       thumbStyle () {
         const [top, left, right, bottom] = this.thumbPosition;
 
+        if (this.$refs.thumb) {
+
+        const boundings = this.$refs.thumb.getBoundingClientRect();
+        console.log(this.thumbPosition, boundings);
+        }
+
         return {
           top,
           left,
@@ -52,16 +65,16 @@
       },
 
       thumbPosition () {
-        if (! this.opened) {
+        if (! this.opened || ! this.$refs.thumb) {
           return [0, 0, 0, 0];
         }
 
-        const boundings = this.$refs.banner.getBoundingClientRect();
+        const boundings = this.$refs.thumb.getBoundingClientRect();
 
         return [
           boundings.top * -1 + 'px',
           boundings.left * -1 + 'px',
-          boundings.width - boundings.right + 'px',
+          boundings.right - window.innerWidth + 'px',
           this.bottom + 'px',
         ];
       },
@@ -75,6 +88,13 @@
   }
 
   .vsc-thumb {
+    position: absolute;
+
+    &.vsc-thumb--background {
+      background-size: cover;
+      background-position: center;
+    }
+
     div > {
       width: 100%;
       height: 100%;
