@@ -1,7 +1,7 @@
 # Vue Scalable Card
 
-<example />
+<example style="margin-bottom: 15px"></example>
 
-## License
+# License
 
 This project is licensed under the MIT license. See the LICENSE file for more details

@@ -1,6 +1,6 @@
 <template>
   <div class="vsc-wrapper" @click="click">
-    <div :class="['vsc-thumb', thumbClass]" :style="thumbStyle" ref="thumb">
+    <div :class="['vsc-thumb', thumbClass, { 'vsc-pointer': pointer }]" :style="thumbStyle" ref="thumb">
       <div :style="{ background: gradient }" v-if="gradient"></div>
     </div>
   </div>
@@ -23,6 +23,11 @@
 
       thumb: {
         type: String,
+      },
+
+      pointer: {
+        type: Boolean,
+        default: false,
       },
 
       thumbClass: {
@@ -95,9 +100,13 @@
       background-position: center;
     }
 
-    div > {
+    div {
       width: 100%;
       height: 100%;
     }
+  }
+
+  .vsc-pointer {
+    cursor: pointer;
   }
 </style>
