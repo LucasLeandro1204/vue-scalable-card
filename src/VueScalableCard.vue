@@ -48,12 +48,6 @@
       thumbStyle () {
         const [top, left, right, bottom] = this.thumbPosition;
 
-        if (this.$refs.thumb) {
-
-        const boundings = this.$refs.thumb.getBoundingClientRect();
-        console.log(this.thumbPosition, boundings);
-        }
-
         return {
           top,
           left,
