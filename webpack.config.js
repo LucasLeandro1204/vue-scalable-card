@@ -4,13 +4,18 @@ var webpack = require('webpack')
 module.exports = {
   entry: {
     'docs/assets/js/app.js': './src/app.js',
-    'dist/vuescalablecard.js': './src/VueScalableCard.js'
+    'dist/vuescalablecard.js': './src/VueScalableCard.vue'
   },
   output: {
     path: path.resolve(__dirname, './'),
     filename: '[name]',
     library: 'VueScalableCard',
     libraryTarget: 'umd'
+  },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
   },
   module: {
     rules: [
