@@ -1,4 +1,9 @@
 <template>
+  <div class="vsc-wrapper">
+    <div class="vsc-thumb" :style="thumbStyle" ref="thumb">
+      <div :style="{ background: gradient }" v-if="gradient"></div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -16,7 +21,15 @@
 
       thumb: {
         type: String,
-        default: '#FFFFFF',
+      },
+
+      transition: {
+        type: String,
+        default: '.3s',
+      },
+
+      gradient: {
+        type: String,
       },
     },
 
@@ -33,7 +46,8 @@
           left,
           right,
           bottom,
-          background: this.thumb,
+          transition: this.transition,
+          backgroundImage: 'url(' + this.thumb + ')',
         };
       },
 
@@ -55,6 +69,15 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  .vsc-wrapper {
+    position: relative;
+  }
 
+  .vsc-thumb {
+    div > {
+      width: 100%;
+      height: 100%;
+    }
+  }
 </style>
