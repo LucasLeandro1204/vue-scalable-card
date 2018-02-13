@@ -1,5 +1,5 @@
 <template>
-  <div class="vsc-wrapper">
+  <div class="vsc-wrapper" @click="click">
     <div :class="['vsc-thumb', thumbClass]" :style="thumbStyle" ref="thumb">
       <div :style="{ background: gradient }" v-if="gradient"></div>
     </div>
@@ -72,6 +72,12 @@
           this.bottom + 'px',
         ];
       },
+    },
+
+    methods: {
+      click (e) {
+        this.$emit('click', e);
+      }
     },
   };
 </script>
