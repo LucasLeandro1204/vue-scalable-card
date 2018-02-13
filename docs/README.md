@@ -1,6 +1,6 @@
 # Vue Scalable Card
 
-<vue-scalable-card></vue-scalable-card>
+<example />
 
 ## License
 
