@@ -56,7 +56,13 @@
     },
 
     created () {
-      window.addEventListener('resize', () => this.$forceUpdate());
+      window.addEventListener('resize', () => {
+        if (! this.opened) {
+          return;
+        }
+
+        this.$forceUpdate();
+      });
     },
 
     computed: {
