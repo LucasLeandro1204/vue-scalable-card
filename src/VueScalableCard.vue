@@ -1,6 +1,10 @@
 <template>
   <div class="vsc-wrapper" @click="click">
-    <div :class="['vsc-thumb', thumbClass, { 'vsc-pointer': pointer }]" :style="thumbStyle" ref="thumb">
+    <div
+      :class="['vsc-thumb', thumbClass, { [thumbOpen]: opened }, { 'vsc-pointer': pointer }]"
+      :style="thumbStyle"
+      ref="thumb">
+
       <div :style="{ background: gradient }" v-if="gradient"></div>
     </div>
   </div>
@@ -30,9 +34,14 @@
         default: false,
       },
 
+      thumbOpen: {
+        type: String,
+        default: 'vsc-thumb--open',
+      },
+
       thumbClass: {
         type: String,
-        default: 'vsc-thumb--background',
+        default: 'vsc-thumb--default',
       },
 
       transition: {
@@ -95,9 +104,22 @@
   .vsc-thumb {
     position: absolute;
 
-    &.vsc-thumb--background {
+    &.vsc-thumb--default {
+      border-radius: 8px;
       background-size: cover;
       background-position: center;
+
+      div {
+        border-radius: 8px;
+      }
+    }
+
+    &.vsc-thumb--open {
+      border-radius: 0 !important;
+
+      div {
+        border-radius: 0 !important;
+      }
     }
 
     div {
