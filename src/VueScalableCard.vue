@@ -37,7 +37,7 @@
 
       transition: {
         type: String,
-        default: '.3s',
+        default: 'all .3s cubic-bezier(0.420, 0.000, 0.580, 1.000)',
       },
 
       gradient: {
