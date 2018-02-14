@@ -5,7 +5,8 @@
       :style="thumbStyle"
       ref="thumb">
 
-      <div :style="{ background: gradient }" v-if="gradient"></div>
+      <div class="vsc-thumb--gradient" :style="{ background: gradient }" v-if="gradient"></div>
+      <div></div>
     </div>
   </div>
 </template>
@@ -109,7 +110,7 @@
       background-size: cover;
       background-position: center;
 
-      div {
+      .vsc-thumb--gradient {
         border-radius: 8px;
       }
     }
@@ -117,12 +118,12 @@
     &.vsc-thumb--open {
       border-radius: 0 !important;
 
-      div {
+      .vsc-thumb--gradient {
         border-radius: 0 !important;
       }
     }
 
-    div {
+    .vsc-thumb--gradient {
       width: 100%;
       height: 100%;
     }
